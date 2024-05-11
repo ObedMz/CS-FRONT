@@ -1,0 +1,35 @@
+.animated-shape {
+  transition: transform 1s ease;
+  animation: move-and-rotate 3s linear infinite;
+  text-shadow: 0 0 30px #fff;
+}
+
+@keyframes move-and-rotate {
+  0% {
+    transform: translateY(0%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-2000%) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.floatingArrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: floatAnimation 3s ease-in-out infinite; 
+}
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
