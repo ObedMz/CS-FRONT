@@ -7,39 +7,42 @@ import { useFilter } from "@/hooks/use-filter";
 import { useEffect, useState } from "react";
 import ItemComponent from "./inventory-item-comp";
 
-export default function ItemList({data}: {data: Item[]}) {
+export default function ItemList({data, searchParam}: {data: Item[], searchParam: string}) {
     const [pageable, setPageable] = useState<Pageable>({page: 0, size: 54, sort: "price", order: "desc"});
     const [array, setArray] = useState<Item[]>(data);
+    const [isOnFilter, setOnFilter] = useState<boolean>(false);
     const [showSpinner, setShowSpinner] = useState<boolean>(true);
     const { filter } = useFilter();
     
-    const [ref, inView] = useInView({threshold: 0.4});
+    const [ref, inView] = useInView();
     
     const fetchMoreItems = async (page: number, render: boolean) => {
         const new_pageable = {page, size: 54, sort: "price", order: "desc"}
         setPageable(new_pageable);
-        const items = await getItems(pageable, { itemType: filter });
+        const items = await getItems(pageable,filter);
         if(items.length == 0)
             setShowSpinner(false);
         
         if(render) setArray(items);
-        else setArray([...array, ...items]);
+        else {
+            const uniqueSet = new Set([...array, ...items]);
+            const newArray = [...uniqueSet];
+            setArray(newArray);
+        }
     }
-
     useEffect(() => {
-        setShowSpinner(false);
+        setOnFilter(true);
         fetchMoreItems(0, true);
-    }, [filter]);
-
+    }, [filter])
     useEffect(() => {
-        if (inView) {
-            fetchMoreItems((pageable.page != null ? (pageable.page + 1) : 0), false);
+        if (inView && searchParam == undefined) {
+            fetchMoreItems((pageable.page != null ? (pageable.page + 1) : 1), false);
         }
     }, [inView]);
 
             return (
         <>
-        <section className="w-[98%] m-auto flex flex-wrap gap-3 items-center justify-center mb-6 min-h-[100vh]">
+        <section className="w-[98%] m-auto flex flex-wrap gap-3 items-center justify-center mb-6">
                     {array.map((item) => (
                     <ItemComponent key={item.id} item={item} edit={false} />
                     ))}

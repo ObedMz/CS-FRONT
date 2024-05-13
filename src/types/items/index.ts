@@ -17,6 +17,11 @@ export enum WearType {
     BS = "Battle Scarred",
     NONE = "‎"
 }
+export interface GroupedItem {
+    groupName: string;
+    itemTypes?: string[];
+}
+
 export function valueOf(key: string): string | undefined {
     return WearType[key as keyof typeof WearType];
 }

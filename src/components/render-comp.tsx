@@ -4,14 +4,14 @@ import SelectorComp from "./selector-comp";
 import FilterProvider from "@/providers/filter-provider";
 import ArrayComp from "./array-comp";
 
-export default function RenderingComponent({data}: {data: Item[]}) {
+export default function RenderingComponent({data, searchParam}: {data: Item[], searchParam: string}) {
 
     return (
         <>
             <FilterProvider>
             <SelectorComp/>
             <br/>
-            <ArrayComp data={data}/>
+            <ArrayComp data={data} searchParam={searchParam}/>
             </FilterProvider> 
         </> 
         );

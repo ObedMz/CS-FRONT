@@ -1,8 +1,8 @@
 'use client'
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TetherOption, BinanceOption, BankOption } from "../../components/social-banks";
 import { useHeaderOpt } from "@/hooks/header-opt";
+import Link from "next/link";
 
 export default function Header() {
     const opacity = useHeaderOpt();
@@ -14,12 +14,12 @@ export default function Header() {
         boxShadow: opacity > 0 ? "0px 2px 8px rgba(0, 0, 0, 0.3)" : "none"
       }}
     >
-      <div className="flex items-center gap-5">
+      <a href="/" className="flex items-center gap-5">
         <div className="w-[50px] h-[50px]">
           <Image src="/logo.jpg" alt="Logo" width={72} height={16} />
         </div>
         <h1 className="text-xl font-bold">Jabbu Store</h1>
-      </div>
+      </a>
       <div className="flex gap-5 items-center">
         <TetherOption />
         <BinanceOption />
