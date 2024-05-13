@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import ItemComponent from "../inventory-item-comp";
 import updateItem from "@/helpers/update-item";
+import { useRouter } from "next/navigation";
 
 export default function AdminEditForm({itemProp } : {   itemProp : Item }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     
     const [percentage, setPercentage] = useState<number>(itemProp.addedPercentage || 0);
     const [message, setMessage ] = useState<ResponseMessage | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         setPercentage(itemProp.addedPercentage || 0);
@@ -20,6 +22,9 @@ export default function AdminEditForm({itemProp } : {   itemProp : Item }) {
   const onSubmit = async (data: any) => {
     const response = await updateItem(itemProp.id , (data.addedPercentage == '' ? null : data.addedPercentage), data.hidden);
     setMessage(response);
+    router.refresh();
+    setTimeout(() => setMessage(null), 3000);
+
   };
 
     return (
@@ -32,7 +37,6 @@ export default function AdminEditForm({itemProp } : {   itemProp : Item }) {
                 type="checkbox"
                 className="form-checkbox h-5 w-5 text-blue-600 bg-blue-600 focus:ring-red-500"
                 {...register("hidden")}
-                checked={(itemProp.hidden == null ? false : itemProp.hidden)}
                 defaultChecked={(itemProp.hidden == null ? false : itemProp.hidden)}
               />
             </div>
@@ -57,7 +61,7 @@ export default function AdminEditForm({itemProp } : {   itemProp : Item }) {
             { message && (message === ResponseMessage.SUCCESS ? (
               <div className="text-green-500">Success</div>
             ) : <div className='text-red-500'>Error</div>) }
-            <ItemComponent item={itemProp} />
+            <ItemComponent item={itemProp} edit={true}/>
           </form>
         </>
     )

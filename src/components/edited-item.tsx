@@ -38,7 +38,7 @@ export default function ItemEditedComponent ({item, onClick}: {item: Item, onCli
             <HtmlComponent data={item.stickerList} /> 
     
         </div>
-
+ 
         <div className={`w-full h-[4px]`} style={{backgroundColor: `#${item.color}`} }></div>
         <div className={`p-3 font-bold flex gap-1 items-center text-xl ${item.addedPercentage && item.addedPercentage> 0 ? "text-orange-400" : "text-white"}`}>
             ${item.addedPercentage && item.addedPercentage> 0 ? (item.price + (item.price * item.addedPercentage / 100)).toFixed(2) : item.price}

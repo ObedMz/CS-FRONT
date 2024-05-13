@@ -17,7 +17,8 @@ export default function Page() {
     
     useEffect(() => {
         const fetchData = async () => {
-            const data: SteamDTO = await getSteam();
+            const data: SteamDTO | null = await getSteam();
+            if(!data) return
             if(data.key && data.steamIDs) {
                 setSteamData(data);
             } else {

@@ -41,7 +41,7 @@ export default function ItemList({data}: {data: Item[]}) {
         <>
         <section className="w-[98%] m-auto flex flex-wrap gap-3 items-center justify-center mb-6 min-h-[100vh]">
                     {array.map((item) => (
-                    <ItemComponent key={item.id} item={item} />
+                    <ItemComponent key={item.id} item={item} edit={false} />
                     ))}
                 </section>
                 <div ref={ref} className="w-full p-5">
