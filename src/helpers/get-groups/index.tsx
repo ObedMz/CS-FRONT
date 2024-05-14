@@ -16,7 +16,8 @@ export default async function getGroups(): Promise<GroupedItem[]> {
             throw new Error('Failed to fetch data');
         }
         const data: GroupedItem[] = await response.json();
-        return data;
+        const filteredItems = data.filter(item => item.itemTypes && item.itemTypes.every(type => type !== null));
+        return filteredItems;
     } catch (error) {
         console.error(error);
         return [];
