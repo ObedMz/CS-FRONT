@@ -5,6 +5,7 @@ import { ResponseMessage, SteamDTO } from "@/types";
 import getSteam from "@/helpers/get-steam";
 import { Eye, EyeOff, Plus, Trash2 } from "lucide-react";
 import updateSteam from "@/helpers/update-steam";
+import UpdateSteamBtn from "@/components/update-steam-btn";
 
 export default function Page() {
     const [showKey, setShowKey] = useState(false);
@@ -68,7 +69,10 @@ export default function Page() {
 
     return (
         <div className="w-[40%]">
-            <h1 className="text-3xl font-bold mb-6">Steam Configuration</h1>
+            <div className="flex justify-between items-center mb-10">
+            <h1 className="text-3xl font-bold">Steam Configuration</h1>
+            <UpdateSteamBtn/>
+            </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
                 <div className="flex gap-5 items-center mb-5">
