@@ -19,14 +19,16 @@ export default function ItemList({data, searchParam}: {data: Item[], searchParam
     const fetchMoreItems = async (page: number, render: boolean) => {
         const new_pageable = {page, size: 54, sort: "price", order: "desc"}
         setPageable(new_pageable);
-        const items = await getItems(pageable,filter);
-        if(items.length == 0)
+        const items = await getItems(new_pageable,filter);
+        if(items.length == 0) {
             setShowSpinner(false);
+            return;
+        }
         
         if(render) setArray(items);
         else {
-            const uniqueSet = new Set([...array, ...items]);
-            const newArray = [...uniqueSet];
+            const uniqueIds = new Set([...array.map(item => item.id), ...items.map(item => item.id)]);
+            const newArray = [...array, ...items].filter(item => uniqueIds.has(item.id));
             setArray(newArray);
         }
     }
@@ -35,8 +37,8 @@ export default function ItemList({data, searchParam}: {data: Item[], searchParam
         fetchMoreItems(0, true);
     }, [filter])
     useEffect(() => {
-        if (inView && searchParam == undefined) {
-            fetchMoreItems((pageable.page != null ? (pageable.page + 1) : 1), false);
+        if (inView && pageable.page !== undefined) {
+            fetchMoreItems(pageable.page + 1, false);
         }
     }, [inView]);
 
