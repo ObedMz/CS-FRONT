@@ -17,6 +17,7 @@ export default function UpdateSteamBtn() {
         setResponse(response);
         setloading(false);
         setTimeout(() => setResponse(null), 3000);
+        window.location.reload();
     }
     
     return (

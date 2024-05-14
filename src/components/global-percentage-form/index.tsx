@@ -19,6 +19,7 @@ export default function GlobalPercentageForm() {
         setMessage(response);
         router.refresh();
         setTimeout(() => setMessage(null), 3000);
+        window.location.reload();
     }
     useEffect(() => {
         const fetchData = async () => {

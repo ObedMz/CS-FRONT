@@ -32,7 +32,7 @@ export default function AdminEditForm({itemProp } : {   itemProp : Item }) {
     },[itemProp.addedPercentage, itemProp.hidden, itemProp.modified]);
 
   const onSubmit = async (data: any) => {
-    const response = await updateItem(itemProp.id , percentage.toString(), checked, ((customPrice) ? Price : null));
+    const response = await updateItem(itemProp.id , (customPrice ? "0" : percentage.toString()), checked, ((customPrice) ? Price : null));
     setMessage(response);
     window.location.reload();
     setTimeout(() => setMessage(null), 3000);
