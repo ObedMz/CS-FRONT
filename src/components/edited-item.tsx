@@ -1,6 +1,6 @@
 import { Item, valueOf } from "@/types/items";
 import Image from "next/image";
-import { CircleDollarSign,Lock, Eye, LockKeyhole, Pencil, Ban, CirclePercent } from "lucide-react";
+import { CircleDollarSign,Lock, Eye, LockKeyhole, Pencil, Ban, CirclePercent, SquarePen } from "lucide-react";
 import HtmlComponent from "./sticker-list";
 
 export default function ItemEditedComponent ({item, onClick}: {item: Item, onClick: () => void}) {
@@ -20,8 +20,9 @@ export default function ItemEditedComponent ({item, onClick}: {item: Item, onCli
         {!item.tradeable && (<LockKeyhole />)}
         <div className="p-3 relative">
             <div className="absolute z-20 top-0 flex gap-2">
+                {item.addedPercentage != null && item.addedPercentage > 0 && (<div className="flex gap-2 rounded-lg bg-red-400 p-1 text-sm items-center font-bold">{item.addedPercentage}%</div>)}
                 {item.hidden && <div className="flex gap-2 rounded-lg bg-blue-600 p-1 text-sm items-center font-bold">Hidden<Ban size={16}/></div>}
-                {item.addedPercentage && <div className="flex gap-2 rounded-lg bg-red-400 p-1 text-sm items-center font-bold">{item.addedPercentage} <CirclePercent size={16} /></div>}
+                {item.modified && <div className="flex gap-2 rounded-lg bg-green-400 p-1 text-sm items-center font-bold">Modified<SquarePen size={16} /></div>}
             </div>
             <div style={{
                 position: 'absolute',
@@ -40,8 +41,10 @@ export default function ItemEditedComponent ({item, onClick}: {item: Item, onCli
         </div>
  
         <div className={`w-full h-[4px]`} style={{backgroundColor: `#${item.color}`} }></div>
-        <div className={`p-3 font-bold flex gap-1 items-center text-xl ${item.addedPercentage && item.addedPercentage> 0 ? "text-orange-400" : "text-white"}`}>
-            ${item.addedPercentage && item.addedPercentage> 0 ? (item.price + (item.price * item.addedPercentage / 100)).toFixed(2) : item.price}
+        <div className={`p-3 font-bold flex gap-1 items-center text-xl ${item.addedPercentage && item.addedPercentage> 0 && !item.modified ? "text-orange-400" : "text-white"}`}>
+            ${item.modified ? item.custom_price :
+            
+            `${item.addedPercentage && item.addedPercentage> 0 ? (item.price + (item.price * item.addedPercentage / 100)).toFixed(2) : item.price}`}
             <CircleDollarSign size={20} color="lime"/>
             <div className="ml-auto flex gap-3">
             <a className="cursor-pointer" href={item.inspectLink}><Eye color="white"/></a>

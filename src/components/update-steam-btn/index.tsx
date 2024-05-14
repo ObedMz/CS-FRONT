@@ -21,8 +21,8 @@ export default function UpdateSteamBtn() {
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <button className="w-[150px] h-[40px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{
-                loading ? <LoaderCircle className="animate-spin m-auto" /> : "Update Steam"}
+            <button className="w-[180px] h-[40px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{
+                loading ? <LoaderCircle className="animate-spin m-auto" /> : "Force Update Items"}
             </button>
             {response && <p className={`${response == ResponseMessage.SUCCESS ? 'text-green-500' : 'text-red-500'}`}>{response}</p>}
         </form>

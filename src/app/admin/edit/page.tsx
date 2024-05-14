@@ -4,7 +4,6 @@ import ItemEditedComponent from '@/components/edited-item';
 import GlobalPercentageForm from '@/components/global-percentage-form';
 import useSearchEdit from '@/hooks/search-edit';
 import { Item } from '@/types/items';
-import { Search } from 'lucide-react';
 import { useState } from 'react';
 
 const SearchInput = () => {

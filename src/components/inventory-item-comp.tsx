@@ -38,7 +38,9 @@ export default function ItemComponent ({item, edit}: {item: Item, edit: boolean}
 
         <div className={`w-full h-[4px]`} style={{backgroundColor: `#${item.color}`} }></div>
         <div className="p-3 font-bold flex gap-1 items-center text-xl">
-            ${(!edit && item.addedPercentage && item.addedPercentage >0) ? `${(item.price + (item.price * item.addedPercentage / 100)).toFixed(2)}` : `${item.price}`}
+            ${item.modified ? item.custom_price : 
+              `${(!edit && item.addedPercentage && item.addedPercentage >0) ? `${(item.price + (item.price * item.addedPercentage / 100)).toFixed(2)}` : `${item.price}`}`
+            }
             <CircleDollarSign color={'lime'}/>
             <a className="ml-auto cursor-pointer" href={item.inspectLink}><Eye /></a>
         

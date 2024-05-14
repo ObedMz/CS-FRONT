@@ -29,13 +29,14 @@ export function valueOf(key: string): string | undefined {
 export interface Item {
     id: string;
     displayName: string;
-    modified: string | null;
+    modified: boolean | null;
     group: string;
     name: string;
     addedPercentage: number | undefined;
     hidden: boolean | undefined;
     itemType: string;
     price: number;
+    custom_price: number | null;
     color: string;
     borderColor: string;
     rarity: string;

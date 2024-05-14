@@ -88,7 +88,7 @@ export default function Page() {
                         {showKey ? <EyeOff color="gray"/> : <Eye color="gray"/>}
                     </button>
                 </div>
-                <label className="font-bold text-xl flex gap-1 items-center justify-between"> User Keys: <div className="ml-2 cursor-pointer bg-green-500 text-white p-1 rounded"><Plus strokeWidth={2.75} onClick={addSteamID}/></div></label>
+                <label className="font-bold text-xl flex gap-1 items-center justify-between"> Steam IDs: <div className="ml-2 cursor-pointer bg-green-500 text-white p-1 rounded"><Plus strokeWidth={2.75} onClick={addSteamID}/></div></label>
                 <br />
                 {steamData.steamIDs.map((id, index) => (
                     <div key={index} className="mb-3 flex items-center">
