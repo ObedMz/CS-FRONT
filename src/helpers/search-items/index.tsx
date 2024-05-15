@@ -12,7 +12,7 @@ try {
     data = data.map(item => {
         if (global_percentage > 0 || !item.modified || item.addedPercentage === null || item.addedPercentage === 0) {
             const modifiedPrice = item.price + (item.price * (global_percentage / 100));
-            item.price = parseFloat(modifiedPrice.toFixed(2));
+            item.global_price = parseFloat(modifiedPrice.toFixed(2));
         }
         return item;
     });

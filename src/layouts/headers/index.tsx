@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { TetherOption, BinanceOption, BankOption } from "../../components/social-banks";
 import { useHeaderOpt } from "@/hooks/header-opt";
-import Link from "next/link";
 
 export default function Header() {
     const opacity = useHeaderOpt();

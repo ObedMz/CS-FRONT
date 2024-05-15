@@ -2,6 +2,7 @@ import { Item, valueOf } from "@/types/items";
 import Image from "next/image";
 import { CircleDollarSign,Lock, Eye, LockKeyhole, Pencil, Ban, CirclePercent, SquarePen } from "lucide-react";
 import HtmlComponent from "./sticker-list";
+import getPrice from "@/helpers/get-price";
 
 export default function ItemEditedComponent ({item, onClick}: {item: Item, onClick: () => void}) {
     return (
@@ -42,9 +43,7 @@ export default function ItemEditedComponent ({item, onClick}: {item: Item, onCli
  
         <div className={`w-full h-[4px]`} style={{backgroundColor: `#${item.color}`} }></div>
         <div className={`p-3 font-bold flex gap-1 items-center text-xl ${item.addedPercentage && item.addedPercentage> 0 && !item.modified ? "text-orange-400" : "text-white"}`}>
-            ${item.modified ? item.custom_price :
-            
-            `${item.addedPercentage && item.addedPercentage> 0 ? (item.price + (item.price * item.addedPercentage / 100)).toFixed(2) : item.price}`}
+            ${getPrice(item)}
             <CircleDollarSign size={20} color="lime"/>
             <div className="ml-auto flex gap-3">
             <a className="cursor-pointer" href={item.inspectLink}><Eye color="white"/></a>

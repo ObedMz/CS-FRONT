@@ -37,6 +37,7 @@ export interface Item {
     itemType: string;
     price: number;
     custom_price: number | null;
+    global_price: number | null;
     color: string;
     borderColor: string;
     rarity: string;

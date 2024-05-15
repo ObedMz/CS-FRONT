@@ -2,6 +2,7 @@ import { Item, valueOf } from "@/types/items";
 import Image from "next/image";
 import { CircleDollarSign,Lock, Eye, LockKeyhole } from "lucide-react";
 import HtmlComponent from "./sticker-list";
+import getPrice from "@/helpers/get-price";
 
 export default function ItemComponent ({item, edit}: {item: Item, edit: boolean}) {
     if(!edit && item.hidden) return null
@@ -38,9 +39,7 @@ export default function ItemComponent ({item, edit}: {item: Item, edit: boolean}
 
         <div className={`w-full h-[4px]`} style={{backgroundColor: `#${item.color}`} }></div>
         <div className="p-3 font-bold flex gap-1 items-center text-xl">
-            ${item.modified ? item.custom_price : 
-              `${(!edit && item.addedPercentage && item.addedPercentage >0) ? `${(item.price + (item.price * item.addedPercentage / 100)).toFixed(2)}` : `${item.price}`}`
-            }
+            ${getPrice(item)}
             <CircleDollarSign color={'lime'}/>
             <a className="ml-auto cursor-pointer" href={item.inspectLink}><Eye /></a>
         
