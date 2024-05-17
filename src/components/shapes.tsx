@@ -4,6 +4,7 @@ import { useShapesState } from "@/hooks/shapes";
 import { ChevronDown } from "lucide-react";
 import styles from "@/styles/animation.module.css";
 import { getRandomInt } from "@/utils/shapes";
+import Image from "next/image";
 
 const ShapesPage = () => {
     const shapes = useShapesState();
@@ -16,10 +17,12 @@ const ShapesPage = () => {
   
     return (
       <div className="bg-gradient-to-b from-[#15171C] to-transparent relative w-full h-screen flex flex-col justify-center items-center">
-        <div className={`${styles.floatingArrow} absolute bottom-0 right-0 left-0 z-30`} onClick={handleScroll}>
-        <ChevronDown color="#fff" size={60} onClick={handleScroll} className="cursor-pointer"/>
+                <Image src="/center-logo.png" alt="Logo" width={350} height={350} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/>
+        <div className={`${styles.floatingArrow} absolute flex text-center items-center justify-center m-auto bottom-0 -translate-x-1/2 -translate-y-1/2 z-30`} onClick={handleScroll}>
+        <ChevronDown color="#fff" size={60} onClick={handleScroll} className="cursor-pointer m-auto"/>
       </div>
         <div className="relative h-full w-full overflow-hidden">
+
           {shapes.map((shape) => {
             return (
               <div

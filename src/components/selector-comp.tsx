@@ -50,7 +50,7 @@ export default function SelectorComp(): JSX.Element {
                 <ul className='flex justify-evenly items-center'>
                     {data.map((option, index) => (
                         <li className='font-bold justify-center gap-2 cursor-pointer flex flex-grow items-center py-4 px-3 hover:bg-[#25272E]' key={index} onClick={() => handleOptionClick(option.groupName as Option)}>
-                            {option.groupName}
+                            {option.groupName.charAt(0).toUpperCase() + option.groupName.slice(1)}
                             {option.groupName !== "All" && <ChevronDown />}
                         </li>
                     ))}
@@ -61,7 +61,7 @@ export default function SelectorComp(): JSX.Element {
                     <ul className='flex justify-evenly items-center'>
                         {data.find((item) => item.groupName === selectedOption)?.itemTypes?.map((subcategory, index) => (
                             <nav key={index} className='font-bold justify-center gap-2 cursor-pointer flex flex-grow items-center py-4 px-3 hover:bg-[#25272E]' onClick={() => handleClick(subcategory)}>
-                                {subcategory}
+                                {subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}
                             </nav>
                         ))}
                    

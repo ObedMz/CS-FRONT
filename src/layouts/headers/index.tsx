@@ -14,8 +14,8 @@ export default function Header() {
       }}
     >
       <a href="/" className="flex items-center gap-5">
-        <div className="w-[50px] h-[50px]">
-          <Image src="/logo.jpg" alt="Logo" width={72} height={16} />
+        <div className="w-[50px] h-[50px] mb-4">
+          <Image src="/logo.png" alt="Logo" width={100} height={100} className="filter invert"/>
         </div>
         <h1 className="text-xl font-bold">Jabbu Store</h1>
       </a>
