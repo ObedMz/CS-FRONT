@@ -10,6 +10,10 @@ This project is a frontend application built with Next.js, utilizing technologie
 
 The page handles features such as pagination, effects, forms, filters, etc.
 
+## Live Preview
+
+You can view the live version of this project [here](https://cs-front-sandy.vercel.app).
+
 ## Getting Started
 
 To get a local copy of the project up and running, follow these steps:
