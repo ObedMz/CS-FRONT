@@ -1,13 +1,11 @@
 'use client'
 import { useFilter } from '@/hooks/use-filter'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 import {type Option} from '@/types'
 
 export default function NewSelectorComp(): JSX.Element {
-    const options = ["Primary", "Secondary", "knife", "agent", "others"]
+    const options = ["primary", "secondary", "knife", "gloves","agent", "others"]
     const { setFilter } = useFilter()
-    const router = useRouter()
 
     const handleOptionClick = (option: Option) => {
         setFilter(option)
