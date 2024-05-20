@@ -10,7 +10,7 @@ const nextConfig = {
         }]},
   experimental: {
           serverActions: {
-              allowedOrigins: ['jabbustore.com'],
+              allowedOrigins: ['jabbustore.com', 'cs-front-sandy.vercel.app'],
           },
         },
 };
