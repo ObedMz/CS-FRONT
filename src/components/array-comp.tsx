@@ -37,7 +37,8 @@ export default function ItemList({data, searchParam}: {data: Item[], searchParam
         fetchMoreItems(0, true);
     }, [filter])
     useEffect(() => {
-        if (inView && pageable.page !== undefined) {
+        console.log(filter)
+        if (!filter && inView && pageable.page !== undefined) {
             fetchMoreItems(pageable.page + 1, false);
         }
     }, [inView]);
@@ -50,7 +51,7 @@ export default function ItemList({data, searchParam}: {data: Item[], searchParam
                     ))}
                 </section>
                 <div ref={ref} className="w-full p-5">
-                {showSpinner && <LoaderCircle color="white" className="m-auto transition-all animate-spin"/>}
+                {showSpinner && !isOnFilter && <LoaderCircle color="white" className="m-auto transition-all animate-spin"/>}
                 </div> 
                 </>
     

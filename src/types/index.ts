@@ -1,6 +1,6 @@
 export interface FilterContextType {
-    filter: string;
-    setFilter: React.Dispatch<React.SetStateAction<string>>;
+    filter: string | null;
+    setFilter: React.Dispatch<React.SetStateAction<string|null>>;
 }
 export interface Shape {
     id: number;
@@ -17,4 +17,4 @@ export interface SteamDTO {
   key: string;
   steamIDs: string[];
 }
-export type Option = "All" |"Rifle" | "Pistol" | "SMG" | "Heavy" | "Knive" | "Gloves";
+export type Option = "Primary" | "Secondary" | "knife"| "agent" | "others";

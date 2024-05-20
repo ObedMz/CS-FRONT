@@ -1,5 +1,4 @@
-import { type Option } from "@/types";
-export const options: Record<Option, string[]> = {
+export const options: Record<any, string[]> = {
     All: [],
     SMG: [
         "MAC-10",
