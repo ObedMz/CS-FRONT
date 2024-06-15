@@ -17,7 +17,7 @@ export const authOptions : NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
            async authorize(credentials): Promise<customUser | null> {
-                const res = await fetch("http://213.133.102.110:31030/auth/login", {
+                const res = await fetch(process.env.BACKEND_URL + "/auth/login", {
                     method: "POST",
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" },

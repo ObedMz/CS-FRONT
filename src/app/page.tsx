@@ -14,6 +14,7 @@ export default async function Home({searchParams}: any) {
     <ShapesPage/>
     <Header/>
     <main className="relative z-2 w-full mt-[90px]">
+      
         <RenderingComponent data={items} searchParam={itemType}/>
     </main>
     </>

@@ -13,7 +13,7 @@ export default function ItemComponent ({item, edit}: {item: Item, edit: boolean}
             <div className="w-full font-black text-[#99A2AB] flex justify-evenly">
                     {valueOf(item.wear.toUpperCase())}
                     <div className="flex gap-1 ml-auto">
-                    {!item.tradeable && (<Lock />)}
+                    {!item.tradeable && (<Lock /> )}
                     </div>
                 </div>
             
