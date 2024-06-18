@@ -18,7 +18,7 @@ export default function ItemEditedComponent ({item, onClick}: {item: Item, onCli
             
         </header>
         <br />
-        {!item.tradeable && (<LockKeyhole />)}
+        {!item.tradeable && (<>{item.marketTradeableRestriction}<LockKeyhole /></>)}
         <div className="p-3 relative">
             <div className="absolute z-20 top-0 flex gap-2">
                 {item.addedPercentage != null && item.addedPercentage > 0 && (<div className="flex gap-2 rounded-lg bg-red-400 p-1 text-sm items-center font-bold">{item.addedPercentage}%</div>)}

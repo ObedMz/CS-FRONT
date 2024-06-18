@@ -19,7 +19,7 @@ export default function ItemComponent ({item, edit}: {item: Item, edit: boolean}
             
         </header>
         <br />
-        {!item.tradeable && (<LockKeyhole />)}
+        {!item.tradeable && (<>{item.marketTradeableRestriction}<LockKeyhole /></>)}
         <div className="p-3 relative">
             <div style={{
                 position: 'absolute',
